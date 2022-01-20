@@ -47,7 +47,7 @@ function setup() {
 
 //nivel uno
   block17 = new Block(610,175,30,40);
-  console.log(block1);
+  console.log(block17);
   block18 = new Block(640,175,30,40);
   block19 = new Block(670,175,30,40);
   block20 = new Block(700,175,30,40);
@@ -66,10 +66,12 @@ function setup() {
   block31 = new Block(730,95,30,40);
   //parte superior
   block32 = new Block(700,55,30,40);
-  image(polygon_img)
+  polygon=Bodies.circle(50,200,20);
+  World.add(world,polygon);
+  slingShot = new Slingshot(this.polygon,{x:100, y:200});
   
-
 }
+
 function draw() {
   background(56,44,44); 
  
@@ -119,6 +121,13 @@ function draw() {
   fill("grey");
   block16.display();
   block32.display();
+  image(polygon_img,polygon.position.x,polygon.y,40,40);
+  
+  slingShot.display();
  
 
+}
+
+function mouseDragged(){
+  
 }
