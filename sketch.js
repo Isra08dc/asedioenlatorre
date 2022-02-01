@@ -46,26 +46,26 @@ function setup() {
 
 
 //nivel uno
-  block17 = new Block(610,175,30,40);
+  block17 = new Block(640,175,30,40);
   console.log(block17);
-  block18 = new Block(640,175,30,40);
-  block19 = new Block(670,175,30,40);
-  block20 = new Block(700,175,30,40);
-  block21 = new Block(730,175,30,40);
-  block22 = new Block(760,175,30,40);
-  block23 = new Block(790,175,30,40);
+  block18 = new Block(670,175,30,40);
+  block19 = new Block(700,175,30,40);
+  block20 = new Block(730,175,30,40);
+  block21 = new Block(760,175,30,40);
+  //block22 = new Block(760,175,30,40);
+  //block23 = new Block(790,175,30,40);
   //nivel dos
-  block24 = new Block(640,135,30,40);
-  block25 = new Block(670,135,30,40);
-  block26 = new Block(700,135,30,40);
-  block27 = new Block(730,135,30,40);
-  block28 = new Block(760,135,30,40);
+  block24 = new Block(670,135,30,40);
+  block25 = new Block(700,135,30,40);
+  block26 = new Block(730,135,30,40);
+  //block27 = new Block(730,135,30,40);
+  //block28 = new Block(760,135,30,40);
   //nivel tres
-  block29 = new Block(670,95,30,40);
-  block30 = new Block(700,95,30,40);
-  block31 = new Block(730,95,30,40);
+ //block29 = new Block(670,95,30,40);
+  //block30 = new Block(700,95,30,40);
+  //block31 = new Block(730,95,30,40);
   //parte superior
-  block32 = new Block(700,55,30,40);
+  block32 = new Block(700,95,30,40);
   polygon=Bodies.circle(50,200,20);
   World.add(world,polygon);
   slingShot = new Slingshot(this.polygon,{x:100, y:200});
@@ -98,8 +98,8 @@ function draw() {
   block19.display();
   block20.display();
   block21.display();
-  block22.display();
-  block23.display();
+  //block22.display();
+  //block23.display();
   fill("pink");
   block8.display();
   block9.display();
@@ -109,19 +109,19 @@ function draw() {
   block24.display();
   block25.display();
   block26.display();
-  block27.display();
-  block28.display();
+  //block27.display();
+  //block28.display();
   fill("turquoise");
   block13.display();
   block14.display();
   block15.display();
-  block29.display();
-  block30.display();
-  block31.display();
+  //block29.display();
+  //block30.display();
+  //block31.display();
   fill("grey");
   block16.display();
   block32.display();
-  image(polygon_img,polygon.position.x,polygon.y,40,40);
+  image(polygon_img,polygon.position.x,polygon.position.y,40,40);
   
   slingShot.display();
  
@@ -129,5 +129,15 @@ function draw() {
 }
 
 function mouseDragged(){
-  
+  Matter.Body.setPosition(this.polygon,{x:mouseX, y:mouseY});
+}
+
+function mouseReleased(){
+  slingShot.fly();
+}
+
+function keyPressed(){
+  if(keyCode===32){
+    slingShot.attach(this.polygon);
+  }
 }
